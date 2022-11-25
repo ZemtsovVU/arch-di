@@ -1,5 +1,6 @@
 package com.example.app.di
 
+import com.example.app.di.edit.EditComponent
 import com.example.app.di.home.HomeComponent
 import dagger.Component
 import javax.inject.Singleton
@@ -8,4 +9,5 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
     fun plusHomeComponent(): HomeComponent
+    fun plusEditComponent(): EditComponent
 }

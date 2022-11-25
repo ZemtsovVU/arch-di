@@ -1,8 +1,8 @@
-package com.example.home.di
+package com.example.edit.di
 
 import com.example.utils.ModuleLifecycle
 
-object HomeDelivery {
+object EditDelivery {
     var lifecycle: ModuleLifecycle? = null
-    var factory: HomeFactory? = null
+    var factory: EditFactory? = null
 }

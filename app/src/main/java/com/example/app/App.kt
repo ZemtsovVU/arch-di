@@ -3,8 +3,11 @@ package com.example.app
 import android.app.Application
 import com.example.app.di.AppModule
 import com.example.app.di.DaggerAppComponent
+import com.example.app.di.edit.EditFactoryImpl
+import com.example.app.di.edit.EditLifecycle
 import com.example.app.di.home.HomeFactoryImpl
-import com.example.app.di.home.HomeLifecycleImpl
+import com.example.app.di.home.HomeLifecycle
+import com.example.edit.di.EditDelivery
 import com.example.home.di.HomeDelivery
 
 class App : Application() {
@@ -13,6 +16,7 @@ class App : Application() {
         super.onCreate()
         initAppComponent()
         initHomeDelivery()
+        initEditDelivery()
     }
 
     private fun initAppComponent() {
@@ -23,8 +27,15 @@ class App : Application() {
 
     private fun initHomeDelivery() {
         with(HomeDelivery) {
-            lifecycle = HomeLifecycleImpl()
+            lifecycle = HomeLifecycle()
             factory = HomeFactoryImpl()
+        }
+    }
+
+    private fun initEditDelivery() {
+        with(EditDelivery) {
+            lifecycle = EditLifecycle()
+            factory = EditFactoryImpl()
         }
     }
 }
