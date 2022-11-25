@@ -30,6 +30,7 @@ class HomeActivity : AppCompatActivity() {
                 binding.flContainer.id,
                 HomeFragment().apply {
                     viewModelFactory = factory.viewModelFactory
+                    navigation = factory.navigation
                 }
             )
         }

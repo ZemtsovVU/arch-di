@@ -17,11 +17,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel: HomeViewModel by viewModels { checkNotNull(viewModelFactory) }
+
     var viewModelFactory: HomeViewModelFactory? = null
+    var navigation: HomeNavigation? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
+
+        binding.bEdit.setOnClickListener { navigation?.openEditScreen(requireActivity()) }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

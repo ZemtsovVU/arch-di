@@ -17,11 +17,15 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
     private lateinit var binding: FragmentEditBinding
 
     private val viewModel: EditViewModel by viewModels { checkNotNull(viewModelFactory) }
+
     var viewModelFactory: EditViewModelFactory? = null
+    var navigation: EditNavigation? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEditBinding.bind(view)
+
+        binding.bSave.setOnClickListener { navigation?.closeSelf(requireActivity()) }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

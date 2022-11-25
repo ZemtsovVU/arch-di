@@ -1,13 +1,21 @@
 package com.example.app.di.home
 
+import com.example.app.navigation.HomeNavigator
 import com.example.home.data.HomeRepository
 import com.example.home.di.HomeViewModelFactory
 import com.example.home.domain.HomeInteractor
+import com.example.home.ui.HomeNavigation
 import dagger.Module
 import dagger.Provides
 
 @Module
 class HomeModule {
+
+    @Provides
+    @HomeScope
+    fun provideNavigation(): HomeNavigation {
+        return HomeNavigator()
+    }
 
     @Provides
     @HomeScope
