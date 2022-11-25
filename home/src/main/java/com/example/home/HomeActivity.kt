@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.example.home.databinding.ActivityHomeBinding
-import com.example.home.di.HomeDelivery
 import com.example.home.di.HomeFactory
 import com.example.home.ui.HomeFragment
 import com.example.utils.DeliveryGuard
@@ -13,14 +12,18 @@ import com.example.utils.ModuleLifecycle
 @OptIn(DeliveryGuard::class)
 class HomeActivity : AppCompatActivity() {
 
+    companion object {
+        const val LIFECYCLE_EXTRA_KEY = "HOME_LIFECYCLE"
+        const val FACTORY_EXTRA_KEY = "HOME_FACTORY"
+    }
+
     private lateinit var binding: ActivityHomeBinding
 
-    private val lifecycle: ModuleLifecycle
-        get() = checkNotNull(HomeDelivery.lifecycle)
-    private val factory: HomeFactory
-        get() = checkNotNull(HomeDelivery.factory)
+    private lateinit var lifecycle: ModuleLifecycle
+    private lateinit var factory: HomeFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        initExtras()
         lifecycle.onStarted()
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -43,5 +46,11 @@ class HomeActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         lifecycle.onFinished()
+    }
+
+    private fun initExtras() {
+        val extras = checkNotNull(intent.extras)
+        lifecycle = extras.getSerializable(LIFECYCLE_EXTRA_KEY) as ModuleLifecycle
+        factory = extras.getSerializable(FACTORY_EXTRA_KEY) as HomeFactory
     }
 }

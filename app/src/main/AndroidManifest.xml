@@ -14,13 +14,14 @@
         android:theme="@style/Theme.App"
         tools:targetApi="33">
         <activity
-            android:name="com.example.home.HomeActivity"
+            android:name="com.example.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.home.HomeActivity" />
         <activity android:name="com.example.edit.EditActivity" />
     </application>
 

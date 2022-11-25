@@ -4,8 +4,9 @@ import com.example.app.componentprovider.editComponent
 import com.example.edit.di.EditFactory
 import com.example.edit.di.EditViewModelFactory
 import com.example.edit.ui.EditNavigation
+import java.io.Serializable
 
-class EditFactoryImpl : EditFactory {
+class EditFactoryImpl : EditFactory, Serializable {
     override val navigation: EditNavigation
         get() = editComponent.provideNavigation()
     override val viewModelFactory: EditViewModelFactory

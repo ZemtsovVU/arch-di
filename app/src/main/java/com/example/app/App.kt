@@ -1,24 +1,21 @@
 package com.example.app
 
+import android.app.Activity
 import android.app.Application
+import android.content.Intent
+import android.os.Bundle
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.app.di.AppModule
 import com.example.app.di.DaggerAppComponent
-import com.example.app.di.edit.EditFactoryImpl
-import com.example.app.di.edit.EditLifecycle
-import com.example.app.di.home.HomeFactoryImpl
-import com.example.app.di.home.HomeLifecycle
-import com.example.edit.di.EditDelivery
-import com.example.home.di.HomeDelivery
-import com.example.utils.DeliveryGuard
+import com.example.app.navigation.SplashNavigator
+import com.example.splash.SplashActivity
 
-@OptIn(DeliveryGuard::class)
 class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
         initAppComponent()
-        initHomeDelivery()
-        initEditDelivery()
+        sendNavigationToSplashScreen()
     }
 
     private fun initAppComponent() {
@@ -27,17 +24,26 @@ class App : Application() {
             .build()
     }
 
-    private fun initHomeDelivery() {
-        with(HomeDelivery) {
-            lifecycle = HomeLifecycle()
-            factory = HomeFactoryImpl()
-        }
-    }
+    private fun sendNavigationToSplashScreen() {
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) = Unit
 
-    private fun initEditDelivery() {
-        with(EditDelivery) {
-            lifecycle = EditLifecycle()
-            factory = EditFactoryImpl()
-        }
+            override fun onActivityStarted(activity: Activity) {
+                if (activity is SplashActivity) {
+                    LocalBroadcastManager.getInstance(activity).sendBroadcast(
+                        Intent(SplashActivity.NAVIGATION_EXTRA_KEY).apply {
+                            putExtra(SplashActivity.NAVIGATION_EXTRA_KEY, SplashNavigator())
+                        }
+                    )
+                    unregisterActivityLifecycleCallbacks(this)
+                }
+            }
+
+            override fun onActivityResumed(activity: Activity) = Unit
+            override fun onActivityPaused(activity: Activity) = Unit
+            override fun onActivityStopped(activity: Activity) = Unit
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) = Unit
+            override fun onActivityDestroyed(activity: Activity) = Unit
+        })
     }
 }
