@@ -1,17 +1,20 @@
 package com.example.app.componentprovider
 
 import com.example.app.appComponent
+import com.example.app.di.edit.DaggerEditComponent
 import com.example.app.di.edit.EditComponent
 
 private var _editComponent: EditComponent? = null
 val editComponent: EditComponent get() = checkNotNull(_editComponent)
 
-fun plusEditComponent() {
+fun createEditComponent() {
     if (_editComponent == null) {
-        _editComponent = appComponent?.plusEditComponent()
+        _editComponent = DaggerEditComponent.builder()
+            .appComponent(appComponent)
+            .build()
     }
 }
 
-fun clearEditComponent() {
+fun releaseEditComponent() {
     _editComponent = null
 }
