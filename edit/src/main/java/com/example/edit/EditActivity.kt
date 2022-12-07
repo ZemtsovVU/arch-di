@@ -7,8 +7,10 @@ import com.example.edit.databinding.ActivityEditBinding
 import com.example.edit.di.EditDelivery
 import com.example.edit.di.EditFactory
 import com.example.edit.ui.EditFragment
+import com.example.utils.DeliveryGuard
 import com.example.utils.ModuleLifecycle
 
+@OptIn(DeliveryGuard::class)
 class EditActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditBinding

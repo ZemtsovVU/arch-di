@@ -9,7 +9,9 @@ import com.example.app.di.home.HomeFactoryImpl
 import com.example.app.di.home.HomeLifecycle
 import com.example.edit.di.EditDelivery
 import com.example.home.di.HomeDelivery
+import com.example.utils.DeliveryGuard
 
+@OptIn(DeliveryGuard::class)
 class App : Application() {
 
     override fun onCreate() {

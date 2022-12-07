@@ -7,8 +7,10 @@ import com.example.home.databinding.ActivityHomeBinding
 import com.example.home.di.HomeDelivery
 import com.example.home.di.HomeFactory
 import com.example.home.ui.HomeFragment
+import com.example.utils.DeliveryGuard
 import com.example.utils.ModuleLifecycle
 
+@OptIn(DeliveryGuard::class)
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
@@ -29,6 +31,8 @@ class HomeActivity : AppCompatActivity() {
             replace(
                 binding.flContainer.id,
                 HomeFragment().apply {
+                    // При пересоздании фрагмента эти зависимости будут утеряны. Так делать нельзя.
+                    // Здесь данный подход использован для наглядности в силу своей простоты.
                     viewModelFactory = factory.viewModelFactory
                     navigation = factory.navigation
                 }

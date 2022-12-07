@@ -1,6 +1,7 @@
 package com.example.app.di
 
 import com.example.datasource.LocalBudgetDataSource
+import com.example.sharedcontracts.BudgetDataSource
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -10,7 +11,7 @@ class DataSourceModule {
 
     @Provides
     @Singleton
-    fun provideLocalBudgetDataSource(): com.example.sharedcontracts.BudgetDataSource {
+    fun provideLocalBudgetDataSource(): BudgetDataSource {
         return LocalBudgetDataSource()
     }
 }

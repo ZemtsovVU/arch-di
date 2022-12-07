@@ -5,6 +5,7 @@ import com.example.home.data.HomeRepository
 import com.example.home.di.HomeViewModelFactory
 import com.example.home.domain.HomeInteractor
 import com.example.home.ui.HomeNavigation
+import com.example.sharedcontracts.BudgetDataSource
 import dagger.Module
 import dagger.Provides
 
@@ -31,7 +32,7 @@ class HomeModule {
 
     @Provides
     @HomeScope
-    fun provideRepository(localBudgetDataSource: com.example.sharedcontracts.BudgetDataSource): HomeRepository {
+    fun provideRepository(localBudgetDataSource: BudgetDataSource): HomeRepository {
         return HomeRepository(localBudgetDataSource)
     }
 }
