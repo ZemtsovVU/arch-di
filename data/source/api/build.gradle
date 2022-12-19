@@ -1,19 +1,20 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    namespace 'com.example.app'
+    namespace 'com.example.dataapi'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.app"
         minSdk 26
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -30,11 +31,4 @@ android {
 }
 
 dependencies {
-    // Для сборки приложения
-    implementation project(':feature:home')
-    implementation project(':feature:edit')
-
-    // Только для инициализации
-    implementation project(':data:source:main')
-    implementation project(':shared:platform')
 }

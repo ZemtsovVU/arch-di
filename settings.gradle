@@ -14,8 +14,14 @@ dependencyResolutionManagement {
 }
 rootProject.name = "research-arch-di"
 include ':app'
-include ':home'
-include ':edit'
-include ':datasource'
-include ':sharedcontracts'
-include ':utils'
+
+include ':feature:home'
+include ':feature:edit'
+
+include ':data:source:api'
+include ':data:source:impl'
+include ':data:source:main'
+include ':data:network:api'
+
+include ':shared:utils'
+include ':shared:platform'
