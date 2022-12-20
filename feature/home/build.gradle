@@ -36,7 +36,7 @@ android {
 
 dependencies {
     implementation project(':shared:utils')
-    implementation project(':data:source:main')
+    implementation project(':data:storage:main')
     implementation project(':feature:navigation')
 
     implementation 'androidx.core:core-ktx:1.9.0'

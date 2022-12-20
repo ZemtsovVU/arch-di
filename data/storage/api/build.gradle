@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.networkapi'
+    namespace 'com.example.storageapi'
     compileSdk 33
 
     defaultConfig {
@@ -31,7 +31,4 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.9.0'
-
-    testImplementation 'junit:junit:4.13.2'
 }

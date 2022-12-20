@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.networkapi'
+    namespace 'com.example.networkmain'
     compileSdk 33
 
     defaultConfig {
@@ -14,7 +14,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -31,7 +30,11 @@ android {
 }
 
 dependencies {
+    api project(':data:network:api')
+    implementation project(':data:network:impl')
+
     implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
 
     testImplementation 'junit:junit:4.13.2'
 }

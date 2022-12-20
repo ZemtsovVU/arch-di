@@ -15,17 +15,19 @@ dependencyResolutionManagement {
 
 rootProject.name = "research-arch-di"
 
-include ':main:app'
-include ':main:demo'
+include ':application:app'
+include ':application:demo'
 
 include ':feature:navigation'
 include ':feature:home'
 include ':feature:edit'
 
-include ':data:source:api'
-include ':data:source:impl'
-include ':data:source:main'
+include ':data:storage:api'
+include ':data:storage:impl'
+include ':data:storage:main'
 include ':data:network:api'
 
 include ':shared:utils'
 include ':shared:platform'
+include ':data:network:impl'
+include ':data:network:main'

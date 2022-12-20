@@ -1,14 +1,16 @@
 package com.example.home.data
 
+import com.example.storageapi.BudgetStorage
+
 class HomeRepository(
-    private val localBudgetDataSource: com.example.dataapi.BudgetDataSource
+    private val budgetStorage: BudgetStorage
 ) {
 
     suspend fun getMonthAmount(): Int {
-        return localBudgetDataSource.getMonthAmount()
+        return budgetStorage.getMonthAmount()
     }
 
     suspend fun getDaysInMonth(): Int {
-        return localBudgetDataSource.getDaysInMonth()
+        return budgetStorage.getDaysInMonth()
     }
 }
