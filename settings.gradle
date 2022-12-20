@@ -12,8 +12,11 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "research-arch-di"
-include ':app'
+
+include ':main:app'
+include ':main:demo'
 
 include ':feature:home'
 include ':feature:edit'
