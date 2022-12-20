@@ -1,9 +1,9 @@
 package com.example.edit.di
 
-import com.example.edit.di.impl.EditNavigator
 import com.example.edit.di.impl.EditViewModelFactory
 import com.example.edit.domain.EditInteractor
-import com.example.edit.ui.EditNavigation
+import com.example.navigation.NavigationMain
+import com.example.navigation.features.EditNavigation
 import com.example.utils.ModuleScope
 import dagger.Module
 import dagger.Provides
@@ -14,7 +14,7 @@ class EditModule {
     @Provides
     @ModuleScope
     fun provideNavigation(): EditNavigation {
-        return EditNavigator()
+        return NavigationMain.navFacade
     }
 
     @Provides

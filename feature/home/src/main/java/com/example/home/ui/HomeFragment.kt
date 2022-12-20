@@ -10,6 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.home.R
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.di.component
+import com.example.navigation.features.HomeNavigation
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment(R.layout.fragment_home) {

@@ -1,4 +1,4 @@
-package com.example.edit.ui
+package com.example.navigation.features
 
 import androidx.fragment.app.FragmentActivity
 

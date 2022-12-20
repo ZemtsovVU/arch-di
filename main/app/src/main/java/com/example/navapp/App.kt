@@ -1,7 +1,8 @@
-package com.example.app
+package com.example.navapp
 
 import android.app.Application
 import com.example.datamain.DataMain
+import com.example.navigation.NavigationMain
 import com.example.platform.PlatformMain
 
 class App : Application() {
@@ -12,6 +13,7 @@ class App : Application() {
     }
 
     private fun initModules() {
+        NavigationMain.initialize(AppNavigation())
         PlatformMain.initialize(applicationContext)
         DataMain.initialize()
     }

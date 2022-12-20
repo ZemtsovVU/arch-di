@@ -18,6 +18,7 @@ rootProject.name = "research-arch-di"
 include ':main:app'
 include ':main:demo'
 
+include ':feature:navigation'
 include ':feature:home'
 include ':feature:edit'
 

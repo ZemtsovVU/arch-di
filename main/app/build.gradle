@@ -35,6 +35,9 @@ dependencies {
     implementation project(':feature:edit')
 
     // Только для инициализации
+    implementation project(':feature:navigation')
     implementation project(':data:source:main')
     implementation project(':shared:platform')
+
+    implementation 'androidx.appcompat:appcompat:1.5.1'
 }

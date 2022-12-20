@@ -2,6 +2,7 @@ package com.example.demo
 
 import android.app.Application
 import com.example.datamain.DataMain
+import com.example.navigation.NavigationMain
 
 class App : Application() {
 
@@ -11,6 +12,7 @@ class App : Application() {
     }
 
     private fun initModules() {
+        NavigationMain.initialize(AppNavigation())
         DataMain.initialize()
     }
 }

@@ -3,10 +3,10 @@ package com.example.home.di
 import com.example.dataapi.BudgetDataSource
 import com.example.datamain.DataMain
 import com.example.home.data.HomeRepository
-import com.example.home.di.impl.HomeNavigator
 import com.example.home.di.impl.HomeViewModelFactory
 import com.example.home.domain.HomeInteractor
-import com.example.home.ui.HomeNavigation
+import com.example.navigation.NavigationMain
+import com.example.navigation.features.HomeNavigation
 import com.example.utils.ModuleScope
 import dagger.Module
 import dagger.Provides
@@ -17,7 +17,7 @@ class HomeModule {
     @ModuleScope
     @Provides
     fun provideNavigation(): HomeNavigation {
-        return HomeNavigator()
+        return NavigationMain.navFacade
     }
 
     @ModuleScope

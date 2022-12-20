@@ -1,14 +1,19 @@
-package com.example.home.di.impl
+package com.example.navapp
 
 import android.content.Intent
 import androidx.fragment.app.FragmentActivity
 import com.example.edit.EditActivity
-import com.example.home.ui.HomeNavigation
+import com.example.navigation.NavigationFacade
 
-class HomeNavigator : HomeNavigation {
+class AppNavigation : NavigationFacade {
+
     override fun openEditScreen(activity: FragmentActivity) {
         activity.startActivity(
             Intent(activity, EditActivity::class.java)
         )
+    }
+
+    override fun closeSelf(activity: FragmentActivity) {
+        activity.finish()
     }
 }

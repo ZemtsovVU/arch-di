@@ -34,5 +34,8 @@ dependencies {
     implementation project(':feature:home')
 
     // Только для инициализации
+    implementation project(':feature:navigation')
     implementation project(':data:source:main')
+
+    implementation 'androidx.appcompat:appcompat:1.5.1'
 }
