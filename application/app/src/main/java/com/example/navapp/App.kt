@@ -1,13 +1,16 @@
 package com.example.navapp
 
 import android.app.Application
+import com.example.navapp.navigation.EditNavigator
+import com.example.navapp.navigation.HomeNavigator
 import com.example.platform.PlatformMain
 import com.example.storagemain.StorageMain
-import com.example.utils.NavigationProvider
+import com.example.utils.navigation.NavigationFactory
+import com.example.utils.navigation.NavigationFactoryEnum
+import com.example.utils.navigation.NavigationFactoryEnum.EDIT
+import com.example.utils.navigation.NavigationFactoryEnum.HOME
 
-class App : Application(), NavigationProvider {
-
-    private val navigation: NavigationFacade = AppNavigation()
+class App : Application(), NavigationFactory {
 
     override fun onCreate() {
         super.onCreate()
@@ -20,7 +23,10 @@ class App : Application(), NavigationProvider {
     }
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T> getNavigation(): T {
-        return navigation as T
+    override fun <T> getNavigation(enum: NavigationFactoryEnum): T {
+        return when (enum) {
+            HOME -> HomeNavigator() as T
+            EDIT -> EditNavigator() as T
+        }
     }
 }
