@@ -6,6 +6,7 @@ import androidx.fragment.app.commit
 import com.example.home.databinding.ActivityHomeBinding
 import com.example.home.di.*
 import com.example.home.ui.HomeFragment
+import com.example.utils.NavigationProvider
 
 class HomeActivity : AppCompatActivity() {
 
@@ -27,7 +28,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initDaggerComponent() {
-        val navigation: HomeNavigation = application as HomeNavigation
+        val navigation: HomeNavigation = (application as NavigationProvider).getNavigation()
         val component: HomeComponent = DaggerHomeComponent.builder()
             .homeModule(HomeModule(navigation))
             .build()

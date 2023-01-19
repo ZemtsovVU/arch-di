@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.fragment.app.FragmentActivity
 import com.example.edit.EditActivity
 
-class AppWithNavigation : App(), NavigationFacade {
+class AppNavigation : NavigationFacade {
 
     override fun openEditScreen(activity: FragmentActivity) {
         activity.startActivity(

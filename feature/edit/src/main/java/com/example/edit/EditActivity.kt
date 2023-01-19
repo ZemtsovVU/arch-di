@@ -6,6 +6,7 @@ import androidx.fragment.app.commit
 import com.example.edit.databinding.ActivityEditBinding
 import com.example.edit.di.*
 import com.example.edit.ui.EditFragment
+import com.example.utils.NavigationProvider
 
 class EditActivity : AppCompatActivity() {
 
@@ -27,7 +28,7 @@ class EditActivity : AppCompatActivity() {
     }
 
     private fun initDaggerComponent() {
-        val navigation: EditNavigation = application as EditNavigation
+        val navigation: EditNavigation = (application as NavigationProvider).getNavigation()
         val component: EditComponent = DaggerEditComponent.builder()
             .editModule(EditModule(navigation))
             .build()

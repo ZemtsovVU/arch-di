@@ -3,8 +3,11 @@ package com.example.navapp
 import android.app.Application
 import com.example.platform.PlatformMain
 import com.example.storagemain.StorageMain
+import com.example.utils.NavigationProvider
 
-open class App : Application() {
+class App : Application(), NavigationProvider {
+
+    private val navigation: NavigationFacade = AppNavigation()
 
     override fun onCreate() {
         super.onCreate()
@@ -14,5 +17,10 @@ open class App : Application() {
     private fun initModules() {
         PlatformMain.initialize(applicationContext)
         StorageMain.initialize()
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T> getNavigation(): T {
+        return navigation as T
     }
 }

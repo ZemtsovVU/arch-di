@@ -33,6 +33,7 @@ dependencies {
     // Для сборки приложения
     implementation project(':feature:home')
     implementation project(':feature:edit')
+    implementation project(':shared:utils')
 
     // Только для инициализации
     implementation project(':data:storage:main')

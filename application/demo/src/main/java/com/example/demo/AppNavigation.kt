@@ -4,7 +4,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import com.example.home.HomeNavigation
 
-class AppWithNavigation : App(), HomeNavigation {
+class AppNavigation : HomeNavigation {
 
     override fun openEditScreen(activity: FragmentActivity) {
         Toast.makeText(
