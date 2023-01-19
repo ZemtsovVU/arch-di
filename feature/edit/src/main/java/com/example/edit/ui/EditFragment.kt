@@ -7,10 +7,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.edit.EditNavigation
 import com.example.edit.R
 import com.example.edit.databinding.FragmentEditBinding
 import com.example.edit.di.component
-import com.example.navigation.features.EditNavigation
 import kotlinx.coroutines.launch
 
 class EditFragment : Fragment(R.layout.fragment_edit) {

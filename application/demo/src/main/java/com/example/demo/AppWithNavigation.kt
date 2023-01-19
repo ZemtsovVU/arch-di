@@ -2,9 +2,9 @@ package com.example.demo
 
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
-import com.example.navigation.NavigationFacade
+import com.example.home.HomeNavigation
 
-class AppNavigation : NavigationFacade {
+class AppWithNavigation : App(), HomeNavigation {
 
     override fun openEditScreen(activity: FragmentActivity) {
         Toast.makeText(
@@ -13,6 +13,4 @@ class AppNavigation : NavigationFacade {
             Toast.LENGTH_SHORT
         ).show()
     }
-
-    override fun closeSelf(activity: FragmentActivity) = Unit
 }

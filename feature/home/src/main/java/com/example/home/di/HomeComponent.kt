@@ -1,7 +1,7 @@
 package com.example.home.di
 
+import com.example.home.HomeNavigation
 import com.example.home.di.impl.HomeViewModelFactory
-import com.example.navigation.features.HomeNavigation
 import com.example.utils.ModuleScope
 import dagger.Component
 

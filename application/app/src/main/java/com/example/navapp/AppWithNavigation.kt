@@ -3,9 +3,8 @@ package com.example.navapp
 import android.content.Intent
 import androidx.fragment.app.FragmentActivity
 import com.example.edit.EditActivity
-import com.example.navigation.NavigationFacade
 
-class AppNavigation : NavigationFacade {
+class AppWithNavigation : App(), NavigationFacade {
 
     override fun openEditScreen(activity: FragmentActivity) {
         activity.startActivity(

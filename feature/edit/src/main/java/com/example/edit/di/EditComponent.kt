@@ -1,7 +1,7 @@
 package com.example.edit.di
 
+import com.example.edit.EditNavigation
 import com.example.edit.di.impl.EditViewModelFactory
-import com.example.navigation.features.EditNavigation
 import com.example.utils.ModuleScope
 import dagger.Component
 

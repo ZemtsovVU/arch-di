@@ -35,7 +35,6 @@ dependencies {
     implementation project(':feature:edit')
 
     // Только для инициализации
-    implementation project(':feature:navigation')
     implementation project(':data:storage:main')
     implementation project(':shared:platform')
 

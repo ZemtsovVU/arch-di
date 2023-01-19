@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.example.home.databinding.ActivityHomeBinding
-import com.example.home.di.DaggerHomeComponent
-import com.example.home.di.clearComponent
-import com.example.home.di.setComponent
+import com.example.home.di.*
 import com.example.home.ui.HomeFragment
 
 class HomeActivity : AppCompatActivity() {
@@ -14,7 +12,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setComponent(DaggerHomeComponent.create())
+        initDaggerComponent()
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -26,6 +24,14 @@ class HomeActivity : AppCompatActivity() {
                 HomeFragment()
             )
         }
+    }
+
+    private fun initDaggerComponent() {
+        val navigation: HomeNavigation = application as HomeNavigation
+        val component: HomeComponent = DaggerHomeComponent.builder()
+            .homeModule(HomeModule(navigation))
+            .build()
+        setComponent(component)
     }
 
     override fun onDestroy() {

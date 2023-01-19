@@ -1,20 +1,19 @@
 package com.example.edit.di
 
+import com.example.edit.EditNavigation
 import com.example.edit.di.impl.EditViewModelFactory
 import com.example.edit.domain.EditInteractor
-import com.example.navigation.NavigationMain
-import com.example.navigation.features.EditNavigation
 import com.example.utils.ModuleScope
 import dagger.Module
 import dagger.Provides
 
 @Module
-class EditModule {
+class EditModule(private val navigation: EditNavigation) {
 
     @Provides
     @ModuleScope
     fun provideNavigation(): EditNavigation {
-        return NavigationMain.navFacade
+        return navigation
     }
 
     @Provides

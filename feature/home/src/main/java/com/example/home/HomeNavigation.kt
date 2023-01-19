@@ -1,4 +1,4 @@
-package com.example.navigation.features
+package com.example.home
 
 import androidx.fragment.app.FragmentActivity
 
