@@ -11,6 +11,8 @@ import com.example.home.HomeNavigation
 import com.example.home.R
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.di.component
+import com.example.home.ui.home.HomeCompletionReason.OpenEditScreen
+import com.example.home.ui.home.HomeCompletionReason.OpenExpenses
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -26,12 +28,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         // todo fix id providing
         binding.bExpenses.setOnClickListener {
-            navigation.openExpenses(requireActivity(), viewModel.dayAmount) { correctedDayAmount ->
-                viewModel.setCorrectedDayAmount(correctedDayAmount)
-                binding.tvDayAmount.text = correctedDayAmount.toString()
+            navigation.onHomeScreenComplete(requireActivity(), OpenExpenses(viewModel.dayAmount)) {
+                viewModel.setCorrectedDayAmount(it)
+                binding.tvDayAmount.text = it.toString()
             }
         }
-        binding.bEdit.setOnClickListener { navigation.openEditScreen(requireActivity()) }
+        binding.bEdit.setOnClickListener {
+            navigation.onHomeScreenComplete(requireActivity(), OpenEditScreen)
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

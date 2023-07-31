@@ -1,16 +1,19 @@
 package com.example.home
 
 import androidx.fragment.app.FragmentActivity
+import com.example.home.ui.expenses.ExpensesCompletionReason
+import com.example.home.ui.home.HomeCompletionReason
 
 interface HomeNavigation {
 
-    fun openExpenses(
+    fun onHomeScreenComplete(
         activity: FragmentActivity,
-        dayAmount: Int,
-        resultCallback: (correctedDayAmount: Int) -> Unit
+        completionReason: HomeCompletionReason,
+        resultCallback: (correctedDayAmount: Int) -> Unit = {}
     )
 
-    fun expensesSaved(activity: FragmentActivity)
-
-    fun openEditScreen(activity: FragmentActivity)
+    fun onExpensesScreenComplete(
+        activity: FragmentActivity,
+        completionReason: ExpensesCompletionReason
+    )
 }

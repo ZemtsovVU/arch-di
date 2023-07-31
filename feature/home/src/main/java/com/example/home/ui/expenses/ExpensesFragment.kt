@@ -13,6 +13,7 @@ import com.example.home.HomeNavigation
 import com.example.home.R
 import com.example.home.databinding.FragmentExpensesBinding
 import com.example.home.di.component
+import com.example.home.ui.expenses.ExpensesCompletionReason.ExpensesSaved
 import kotlinx.coroutines.launch
 
 // todo нужно передавать данные через arguments во избежание их потери при onConfigurationChanged и т.д.
@@ -34,9 +35,10 @@ class ExpensesFragment(private val dayAmount: Int) : Fragment(R.layout.fragment_
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
                     if (it.isCorrected) {
-                        // todo fix id providing
+                        // либо передать result аргументом в navigatioin, а он разрулит с помощью cicerone
                         setFragmentResult("a", bundleOf("b" to it.correctedDayAmount))
-                        navigation.expensesSaved(requireActivity())
+                        // todo fix id providing
+                        navigation.onExpensesScreenComplete(requireActivity(), ExpensesSaved)
                     }
                 }
             }
