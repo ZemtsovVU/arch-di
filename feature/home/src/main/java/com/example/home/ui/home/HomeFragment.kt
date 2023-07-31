@@ -7,7 +7,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.home.HomeNavigation
 import com.example.home.R
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.di.component

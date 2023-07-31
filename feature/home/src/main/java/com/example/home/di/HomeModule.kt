@@ -1,6 +1,6 @@
 package com.example.home.di
 
-import com.example.home.HomeNavigation
+import com.example.home.HomeNavigationFacade
 import com.example.home.data.HomeRepository
 import com.example.home.di.impl.HomeViewModelFactory
 import com.example.home.domain.HomeInteractor
@@ -11,11 +11,11 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class HomeModule(private val navigation: HomeNavigation) {
+class HomeModule(private val navigation: HomeNavigationFacade) {
 
     @ModuleScope
     @Provides
-    fun provideNavigation(): HomeNavigation {
+    fun provideNavigation(): HomeNavigationFacade {
         return navigation
     }
 

@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.home.HomeNavigation
 import com.example.home.R
 import com.example.home.databinding.FragmentExpensesBinding
 import com.example.home.di.component
@@ -22,7 +21,7 @@ class ExpensesFragment(private val dayAmount: Int) : Fragment(R.layout.fragment_
     private lateinit var binding: FragmentExpensesBinding
 
     private val viewModel: ExpensesViewModel by viewModels()
-    private val navigation: HomeNavigation = component.provideNavigation()
+    private val navigation: ExpensesNavigation = component.provideNavigation()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initDaggerComponent() {
-        val navigation: HomeNavigation = navigationFactory.getNavigation(HOME)
+        val navigation: HomeNavigationFacade = navigationFactory.getNavigation(HOME)
         val component: HomeComponent = DaggerHomeComponent.builder()
             .homeModule(HomeModule(navigation))
             .build()

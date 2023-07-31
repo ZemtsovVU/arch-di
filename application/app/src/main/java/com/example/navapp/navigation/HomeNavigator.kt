@@ -4,13 +4,13 @@ import android.content.Intent
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commit
 import com.example.edit.EditActivity
-import com.example.home.HomeNavigation
+import com.example.home.HomeNavigationFacade
 import com.example.home.R
 import com.example.home.ui.expenses.ExpensesCompletionReason
 import com.example.home.ui.expenses.ExpensesFragment
 import com.example.home.ui.home.HomeCompletionReason
 
-class HomeNavigator : HomeNavigation {
+class HomeNavigator : HomeNavigationFacade {
 
     override fun onHomeScreenComplete(
         activity: FragmentActivity,
