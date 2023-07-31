@@ -16,10 +16,17 @@ class HomeViewModel(
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 
+    private var _dayAmount: Int = 0
+    val dayAmount: Int get() = _dayAmount
+
     init {
         viewModelScope.launch {
-            val dayAmount = interactor.calculateDayAmount()
+            _dayAmount = interactor.calculateDayAmount()
             _uiState.update { it.copy(dayAmount = dayAmount) }
         }
+    }
+
+    fun setCorrectedDayAmount(correctedDayAmount: Int) {
+        _dayAmount = correctedDayAmount
     }
 }

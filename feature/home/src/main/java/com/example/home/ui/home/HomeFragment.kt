@@ -25,7 +25,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding = FragmentHomeBinding.bind(view)
 
         // todo fix id providing
-        binding.bExpenses.setOnClickListener { navigation.openExpenses(parentFragmentManager, R.id.flContainer) }
+        binding.bExpenses.setOnClickListener {
+            navigation.openExpenses(requireActivity(), viewModel.dayAmount) { correctedDayAmount ->
+                viewModel.setCorrectedDayAmount(correctedDayAmount)
+                binding.tvDayAmount.text = correctedDayAmount.toString()
+            }
+        }
         binding.bEdit.setOnClickListener { navigation.openEditScreen(requireActivity()) }
 
         viewLifecycleOwner.lifecycleScope.launch {

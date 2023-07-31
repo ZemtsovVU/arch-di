@@ -11,8 +11,9 @@ class ExpensesViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(ExpensesUiState())
     val uiState: StateFlow<ExpensesUiState> = _uiState.asStateFlow()
 
-    fun onSaveButtonClicked() {
+    fun onCorrectButtonClicked(dayAmount: Int) {
         // call some business logic in interactor...
-        _uiState.update { it.copy(isSaved = true) }
+        val corrected = dayAmount + 100
+        _uiState.update { it.copy(isCorrected = true, correctedDayAmount = corrected) }
     }
 }
