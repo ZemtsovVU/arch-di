@@ -1,6 +1,8 @@
 package com.example.navapp.navigation
 
 import android.content.Intent
+import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commit
 import com.example.edit.EditActivity
@@ -15,7 +17,7 @@ class HomeNavigator : HomeNavigationFacade {
     override fun onHomeScreenComplete(
         activity: FragmentActivity,
         completionReason: HomeCompletionReason,
-        resultCallback: (correctedDayAmount: Int) -> Unit
+        resultCallback: (bundle: Bundle) -> Unit
     ) {
         when (completionReason) {
             is HomeCompletionReason.OpenExpenses -> {
@@ -23,12 +25,11 @@ class HomeNavigator : HomeNavigationFacade {
                 activity.supportFragmentManager.setFragmentResultListener(
                     "a",
                     activity
-                ) { requestKey, bundle ->
-                    val correctedDayAmount = bundle.getInt("b")
-                    resultCallback(correctedDayAmount)
+                ) { _, bundle ->
+                    resultCallback(bundle)
                 }
                 activity.supportFragmentManager.commit {
-                    add(R.id.flContainer, ExpensesFragment(completionReason.dayAmount))
+                    replace(R.id.flContainer, ExpensesFragment(completionReason.dayAmount))
                     addToBackStack(null)
                 }
             }

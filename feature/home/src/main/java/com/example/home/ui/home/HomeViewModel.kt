@@ -28,5 +28,6 @@ class HomeViewModel(
 
     fun setCorrectedDayAmount(correctedDayAmount: Int) {
         _dayAmount = correctedDayAmount
+        _uiState.update { it.copy(dayAmount = dayAmount) }
     }
 }

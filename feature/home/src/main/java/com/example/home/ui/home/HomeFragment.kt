@@ -16,20 +16,21 @@ import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    private lateinit var binding: FragmentHomeBinding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding: FragmentHomeBinding get() = checkNotNull(_binding)
 
     private val viewModel: HomeViewModel by viewModels { component.provideViewModelFactory() }
     private val navigation: HomeNavigation = component.provideNavigation()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentHomeBinding.bind(view)
+        _binding = FragmentHomeBinding.bind(view)
 
         // todo fix id providing
         binding.bExpenses.setOnClickListener {
             navigation.onHomeScreenComplete(requireActivity(), OpenExpenses(viewModel.dayAmount)) {
-                viewModel.setCorrectedDayAmount(it)
-                binding.tvDayAmount.text = it.toString()
+                val correctedDayAmount = it.getInt("b")
+                viewModel.setCorrectedDayAmount(correctedDayAmount)
             }
         }
         binding.bEdit.setOnClickListener {
@@ -43,5 +44,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
