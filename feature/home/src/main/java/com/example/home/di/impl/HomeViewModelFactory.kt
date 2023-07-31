@@ -3,7 +3,7 @@ package com.example.home.di.impl
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.home.domain.HomeInteractor
-import com.example.home.ui.HomeViewModel
+import com.example.home.ui.home.HomeViewModel
 
 class HomeViewModelFactory(
     private val interactor: HomeInteractor

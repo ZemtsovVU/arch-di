@@ -38,4 +38,7 @@ dependencies {
     implementation project(':data:storage:main')
 
     implementation 'androidx.appcompat:appcompat:1.5.1'
+
+    // todo remove
+    implementation 'androidx.fragment:fragment-ktx:1.5.5'
 }

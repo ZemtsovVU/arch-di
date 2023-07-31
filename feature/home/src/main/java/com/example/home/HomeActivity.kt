@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.example.home.databinding.ActivityHomeBinding
 import com.example.home.di.*
-import com.example.home.ui.HomeFragment
+import com.example.home.ui.home.HomeFragment
 import com.example.utils.navigation.NavigationFactoryEnum.HOME
 import com.example.utils.navigation.navigationFactory
 
