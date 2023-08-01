@@ -9,10 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.home.ui.HomeCompletionReason
 import com.example.home.R
 import com.example.home.databinding.FragmentExpensesBinding
 import com.example.home.di.component
+import com.example.home.ui.HomeCompletionReason
 import com.example.utils.navigation.Navigation
 import kotlinx.coroutines.launch
 
@@ -38,7 +38,7 @@ class ExpensesFragment(private val dayAmount: Int) : Fragment(R.layout.fragment_
                         // либо передать result аргументом в navigatioin, а он разрулит с помощью cicerone
                         setFragmentResult("a", bundleOf("b" to it.correctedDayAmount))
                         // todo fix id providing
-                        navigation.onComplete(requireActivity(), ExpensesSaved)
+                        navigation.onComplete(ExpensesSaved)
                     }
                 }
             }

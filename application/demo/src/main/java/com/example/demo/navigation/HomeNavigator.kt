@@ -12,10 +12,9 @@ import com.example.home.ui.home.OpenEditScreen
 import com.example.home.ui.home.OpenExpenses
 import com.example.utils.navigation.Navigation
 
-class HomeNavigator : Navigation<HomeCompletionReason> {
+class HomeNavigator(private val activity: FragmentActivity) : Navigation<HomeCompletionReason> {
 
     override fun onComplete(
-        activity: FragmentActivity,
         completionReason: HomeCompletionReason,
         resultCallback: (bundle: Bundle) -> Unit
     ) {

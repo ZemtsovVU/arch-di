@@ -7,10 +7,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.home.ui.HomeCompletionReason
 import com.example.home.R
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.di.component
+import com.example.home.ui.HomeCompletionReason
 import com.example.utils.navigation.Navigation
 import kotlinx.coroutines.launch
 
@@ -23,18 +23,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val navigation: Navigation<HomeCompletionReason> = component.provideNavigation()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        println("aaaa HomeFragment onViewCreated() ${hashCode()}")
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
 
         // todo fix id providing
         binding.bExpenses.setOnClickListener {
-            navigation.onComplete(requireActivity(), OpenExpenses(viewModel.dayAmount)) {
+            navigation.onComplete(OpenExpenses(viewModel.dayAmount)) {
                 val correctedDayAmount = it.getInt("b")
                 viewModel.setCorrectedDayAmount(correctedDayAmount)
             }
         }
         binding.bEdit.setOnClickListener {
-            navigation.onComplete(requireActivity(), OpenEditScreen)
+            navigation.onComplete(OpenEditScreen)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -47,6 +48,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     override fun onDestroyView() {
+        println("aaaa HomeFragment onDestroyView() ${hashCode()}")
         super.onDestroyView()
         _binding = null
     }

@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Researcharchdi"
         tools:targetApi="33">
         <activity
-            android:name="com.example.home.HomeActivity"
+            android:name=".DemoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

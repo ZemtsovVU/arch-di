@@ -5,18 +5,17 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commit
 import com.example.edit.EditActivity
-import com.example.home.ui.HomeCompletionReason
 import com.example.home.R
+import com.example.home.ui.HomeCompletionReason
 import com.example.home.ui.expenses.ExpensesFragment
 import com.example.home.ui.expenses.ExpensesSaved
 import com.example.home.ui.home.OpenEditScreen
 import com.example.home.ui.home.OpenExpenses
 import com.example.utils.navigation.Navigation
 
-class HomeNavigator : Navigation<HomeCompletionReason> {
+class HomeNavigator(private val activity: FragmentActivity) : Navigation<HomeCompletionReason> {
 
     override fun onComplete(
-        activity: FragmentActivity,
         completionReason: HomeCompletionReason,
         resultCallback: (bundle: Bundle) -> Unit
     ) {

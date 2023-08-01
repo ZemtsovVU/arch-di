@@ -20,6 +20,7 @@ class HomeViewModel(
     val dayAmount: Int get() = _dayAmount
 
     init {
+        println("aaaa HomeViewModel init() ${hashCode()}")
         viewModelScope.launch {
             _dayAmount = interactor.calculateDayAmount()
             _uiState.update { it.copy(dayAmount = dayAmount) }
@@ -27,6 +28,7 @@ class HomeViewModel(
     }
 
     fun setCorrectedDayAmount(correctedDayAmount: Int) {
+        println("aaaa HomeViewModel setCorrectedDayAmount($correctedDayAmount) ${hashCode()}")
         _dayAmount = correctedDayAmount
         _uiState.update { it.copy(dayAmount = dayAmount) }
     }

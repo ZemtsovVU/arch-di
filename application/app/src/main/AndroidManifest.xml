@@ -14,7 +14,7 @@
         android:theme="@style/Theme.App"
         tools:targetApi="33">
         <activity
-            android:name="com.example.home.HomeActivity"
+            android:name="com.example.navapp.AppActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
