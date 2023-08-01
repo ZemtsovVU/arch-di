@@ -1,21 +1,22 @@
 package com.example.home.di
 
-import com.example.home.HomeNavigationFacade
+import com.example.home.ui.HomeCompletionReason
 import com.example.home.data.HomeRepository
 import com.example.home.di.impl.HomeViewModelFactory
 import com.example.home.domain.HomeInteractor
 import com.example.storageapi.BudgetStorage
 import com.example.storagemain.StorageMain
 import com.example.utils.ModuleScope
+import com.example.utils.navigation.Navigation
 import dagger.Module
 import dagger.Provides
 
 @Module
-class HomeModule(private val navigation: HomeNavigationFacade) {
+class HomeModule(private val navigation: Navigation<HomeCompletionReason>) {
 
     @ModuleScope
     @Provides
-    fun provideNavigation(): HomeNavigationFacade {
+    fun provideNavigation(): Navigation<HomeCompletionReason> {
         return navigation
     }
 

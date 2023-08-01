@@ -7,11 +7,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.home.ui.HomeCompletionReason
 import com.example.home.R
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.di.component
-import com.example.home.ui.home.HomeCompletionReason.OpenEditScreen
-import com.example.home.ui.home.HomeCompletionReason.OpenExpenses
+import com.example.utils.navigation.Navigation
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -20,7 +20,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding: FragmentHomeBinding get() = checkNotNull(_binding)
 
     private val viewModel: HomeViewModel by viewModels { component.provideViewModelFactory() }
-    private val navigation: HomeNavigation = component.provideNavigation()
+    private val navigation: Navigation<HomeCompletionReason> = component.provideNavigation()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,13 +28,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         // todo fix id providing
         binding.bExpenses.setOnClickListener {
-            navigation.onHomeScreenComplete(requireActivity(), OpenExpenses(viewModel.dayAmount)) {
+            navigation.onComplete(requireActivity(), OpenExpenses(viewModel.dayAmount)) {
                 val correctedDayAmount = it.getInt("b")
                 viewModel.setCorrectedDayAmount(correctedDayAmount)
             }
         }
         binding.bEdit.setOnClickListener {
-            navigation.onHomeScreenComplete(requireActivity(), OpenEditScreen)
+            navigation.onComplete(requireActivity(), OpenEditScreen)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

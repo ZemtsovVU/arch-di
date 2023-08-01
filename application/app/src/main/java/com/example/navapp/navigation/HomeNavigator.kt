@@ -2,25 +2,26 @@ package com.example.navapp.navigation
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commit
 import com.example.edit.EditActivity
-import com.example.home.HomeNavigationFacade
+import com.example.home.ui.HomeCompletionReason
 import com.example.home.R
-import com.example.home.ui.expenses.ExpensesCompletionReason
 import com.example.home.ui.expenses.ExpensesFragment
-import com.example.home.ui.home.HomeCompletionReason
+import com.example.home.ui.expenses.ExpensesSaved
+import com.example.home.ui.home.OpenEditScreen
+import com.example.home.ui.home.OpenExpenses
+import com.example.utils.navigation.Navigation
 
-class HomeNavigator : HomeNavigationFacade {
+class HomeNavigator : Navigation<HomeCompletionReason> {
 
-    override fun onHomeScreenComplete(
+    override fun onComplete(
         activity: FragmentActivity,
         completionReason: HomeCompletionReason,
         resultCallback: (bundle: Bundle) -> Unit
     ) {
         when (completionReason) {
-            is HomeCompletionReason.OpenExpenses -> {
+            is OpenExpenses -> {
                 // либо Cicerone resultListener
                 activity.supportFragmentManager.setFragmentResultListener(
                     "a",
@@ -34,19 +35,12 @@ class HomeNavigator : HomeNavigationFacade {
                 }
             }
 
-            is HomeCompletionReason.OpenEditScreen -> {
-                activity.startActivity(Intent(activity, EditActivity::class.java))
-            }
-        }
-    }
-
-    override fun onExpensesScreenComplete(
-        activity: FragmentActivity,
-        completionReason: ExpensesCompletionReason
-    ) {
-        when (completionReason) {
-            ExpensesCompletionReason.ExpensesSaved -> {
+            is ExpensesSaved -> {
                 activity.supportFragmentManager.popBackStack()
+            }
+
+            is OpenEditScreen -> {
+                activity.startActivity(Intent(activity, EditActivity::class.java))
             }
         }
     }

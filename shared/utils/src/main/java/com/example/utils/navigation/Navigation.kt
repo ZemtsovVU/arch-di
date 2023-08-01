@@ -1,12 +1,12 @@
-package com.example.home.ui.home
+package com.example.utils.navigation
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 
-interface HomeNavigation {
-    fun onHomeScreenComplete(
+interface Navigation<T> {
+    fun onComplete(
         activity: FragmentActivity,
-        completionReason: HomeCompletionReason,
+        completionReason: T,
         resultCallback: (bundle: Bundle) -> Unit = {}
     )
 }

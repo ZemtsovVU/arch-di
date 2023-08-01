@@ -4,21 +4,23 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commit
-import com.example.home.HomeNavigationFacade
+import com.example.home.ui.HomeCompletionReason
 import com.example.home.R
-import com.example.home.ui.expenses.ExpensesCompletionReason
 import com.example.home.ui.expenses.ExpensesFragment
-import com.example.home.ui.home.HomeCompletionReason
+import com.example.home.ui.expenses.ExpensesSaved
+import com.example.home.ui.home.OpenEditScreen
+import com.example.home.ui.home.OpenExpenses
+import com.example.utils.navigation.Navigation
 
-class HomeNavigator : HomeNavigationFacade {
+class HomeNavigator : Navigation<HomeCompletionReason> {
 
-    override fun onHomeScreenComplete(
+    override fun onComplete(
         activity: FragmentActivity,
         completionReason: HomeCompletionReason,
         resultCallback: (bundle: Bundle) -> Unit
     ) {
         when (completionReason) {
-            is HomeCompletionReason.OpenExpenses -> {
+            is OpenExpenses -> {
                 // либо Cicerone resultListener
                 activity.supportFragmentManager.setFragmentResultListener(
                     "a",
@@ -32,23 +34,16 @@ class HomeNavigator : HomeNavigationFacade {
                 }
             }
 
-            is HomeCompletionReason.OpenEditScreen -> {
+            is ExpensesSaved -> {
+                activity.supportFragmentManager.popBackStack()
+            }
+
+            is OpenEditScreen -> {
                 Toast.makeText(
                     activity,
                     "It'a a Demo. Edit screen not available.",
                     Toast.LENGTH_SHORT
                 ).show()
-            }
-        }
-    }
-
-    override fun onExpensesScreenComplete(
-        activity: FragmentActivity,
-        completionReason: ExpensesCompletionReason
-    ) {
-        when (completionReason) {
-            ExpensesCompletionReason.ExpensesSaved -> {
-                activity.supportFragmentManager.popBackStack()
             }
         }
     }
