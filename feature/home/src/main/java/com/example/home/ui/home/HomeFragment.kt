@@ -12,6 +12,7 @@ import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.di.component
 import com.example.home.ui.home.HomeCompletionReason.OpenEditScreen
 import com.example.home.ui.home.HomeCompletionReason.OpenExpenses
+import com.example.utils.navigation.observer.ResultObserver
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -25,6 +26,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
+
+        val resultObserver = object : ResultObserver {
+            override fun onResult() {
+
+            }
+        }
+        navigation.addObserver(resultObserver)
 
         // todo fix id providing
         binding.bExpenses.setOnClickListener {
